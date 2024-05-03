@@ -239,7 +239,8 @@ require('lazy').setup({
   -- Tabnine, maybe it will finally work this time
   --
   { 'codota/tabnine-nvim', build = './dl_binaries.sh' },
-
+  -- Terminal
+  { 'akinsho/toggleterm.nvim', version = '*', config = true },
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
@@ -919,5 +920,8 @@ require('tabnine').setup {
   exclude_filetypes = { 'TelescopePrompt', 'NvimTree' },
   log_file_path = nil, -- absolute path to Tabnine log file
 }
+
+-- Terminal setup
+require('toggleterm').setup {}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
