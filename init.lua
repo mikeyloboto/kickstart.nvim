@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -236,6 +236,9 @@ require('lazy').setup({
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
+  -- Tabnine, maybe it will finally work this time
+  --
+  { 'codota/tabnine-nvim', build = './dl_binaries.sh' },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -835,7 +838,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'angular', 'php', 'svelte' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -907,6 +910,14 @@ require('lazy').setup({
     },
   },
 })
-
+require('tabnine').setup {
+  disable_auto_comment = true,
+  accept_keymap = '<Tab>',
+  dismiss_keymap = '<C-]>',
+  debounce_ms = 800,
+  suggestion_color = { gui = '#808080', cterm = 244 },
+  exclude_filetypes = { 'TelescopePrompt', 'NvimTree' },
+  log_file_path = nil, -- absolute path to Tabnine log file
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
